@@ -48,6 +48,266 @@ h1, h2, h3, h4, h5, h6 {
 
 /** Your CSS Below **/
 
-/** Attribution CSS **/
-.attribution { font-size: 11px; text-align: center; }
-.attribution a { color: hsl(228, 45%, 44%); }
+/* Body Styles */
+body {
+  background-color: var(--clr-paleBlue); /* Set background color */
+  font-family: var(--fs-base), sans-serif; /* Set base font family */
+  font-size: var(--font-paragraph); /* Set base font size (18px) */
+  color: var(--clr-darkGrayBlue); /* Set text color */
+  margin: 0; /* Remove default margin */
+  min-height: 100vh; /* Ensure body takes at least the full viewport height */
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Media Query for Larger Screens */
+@media (min-width: 600px) {
+  body {
+    min-height: 100vh; /* Ensure body takes full viewport height */
+    display: grid;
+    place-items: center; /* Center content both horizontally and vertically */
+  }
+}
+
+/* 
+  .flex-group: A utility class using Flexbox to align items in a row with space between them.
+  'gap' sets the space between flex items.
+*/
+.flex-group {
+  display: flex;
+  align-items: center; /* Vertically center items */
+  gap: 0.5rem; /* Space between items */
+  flex-wrap: wrap; /* Allow items to wrap if needed */
+}
+
+/* 
+  .grid-flow: A utility class that creates a grid layout.
+  'align-content: start' ensures items start from the top.
+  Default gap is set to 1rem.
+*/
+.grid-flow {
+  display: grid;
+  align-content: start; /* Align grid items to the top */
+  gap: 1rem; /* Space between grid items */
+  width: 100%; /* Ensure the grid takes full width */
+}
+
+/* If the element has data-spacing="large", increase the grid gap to 2rem */
+.grid-flow[data-spacing="large"] {
+  gap: 2rem; /* Larger gap for elements with this attribute */
+}
+
+/* Section Title Styles */
+.section-title {
+  color: var(--clr-lightLavender); /* Set text color */
+  font-size: 1.5rem; /* Set font size */
+}
+
+/* 
+  .button: Basic button styling with rounded edges and padding.
+  'border-radius: 100vw' makes it fully rounded.
+*/
+.button {
+  color: var(--clr-lightLavender); /* Set text color */
+  font-weight: bold; /* Set font weight */
+  line-height: 1; /* Set line height */
+  background: var(--clr-darkGrayBlue); /* Set background color */
+  padding: 1rem 2rem; /* Add padding */
+  border: 0; /* Remove border */
+  border-radius: 100vw; /* Fully rounded corners */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+/* Change background on hover or focus for better interactivity */
+.button:hover,
+.button:focus-visible {
+  background: linear-gradient(var(--gra-lightSlateBlue), var(--gra-lightRoyalBlue)); /* Gradient background */
+}
+
+/* Result Summary Container */
+.result-summary {
+  --padding: 2.5rem; /* Define padding variable */
+  --border-radius: 2rem; /* Define border radius variable */
+  max-width: 46rem; /* Maximum width of the container */
+  display: grid; /* Use grid layout */
+}
+
+/* Media Query for Larger Screens */
+@media (min-width: 600px) {
+  .result-summary {
+    margin-inline: 1rem; /* Add horizontal margin */
+    grid-template-columns: 1fr 1fr; /* Two-column layout */
+    border-radius: var(--border-radius); /* Apply border radius */
+    overflow: hidden; /* Hide overflow */
+    box-shadow: 0.5rem 1rem 4rem 0.5rem hsla(224, 30%, 27%, 0.2); /* Add shadow */
+  }
+}
+
+/* Results Section Styles */
+.results {
+  color: hsla(var(--clr-neutral-hsl-100), 0.7); /* Set text color with opacity */
+  text-align: center; /* Center text */
+  padding: 3rem; /* Add padding */
+  background: linear-gradient(var(--gra-lightSlateBlue), var(--gra-lightRoyalBlue)); /* Gradient background */
+  border-radius: 0 0 var(--border-radius) var(--border-radius); /* Rounded corners at the bottom */
+  height: 100%; /* Full height */
+}
+
+/* Media Query for Larger Screens */
+@media (min-width: 600px) {
+  .results {
+    border-radius: var(--border-radius); /* Apply border radius on all sides */
+  }
+}
+
+/* 
+  .result-score: Creates a circular element for displaying the main score.
+  Uses CSS Grid to center its content.
+*/
+.result-score {
+  display: grid;
+  place-content: center; /* Center content */
+  width: 12rem; /* Set width */
+  margin-inline: auto; /* Center horizontally */
+  background: linear-gradient(var(--gra-violetBlue), var(--gra-persianBlue)); /* Gradient background */
+  aspect-ratio: 1 / 1; /* Ensure a perfect circle */
+  border-radius: 50%; /* Fully rounded corners */
+}
+
+/* Styles for the numeric score inside the circle */
+.result-score span {
+  display: block; /* Make span a block element */
+  font-size: 5rem; /* Set font size */
+  font-weight: var(--fw-black); /* Set font weight */
+  line-height: 1; /* Set line height */
+  color: var(--clr-white); /* Set text color */
+}
+
+.result-score small {
+  color: var(--clr-lightLavender); /* Set text color */
+}
+
+/* Result Description Styles */
+.result-description {
+  color: var(--clr-lightLavender); /* Set text color */
+}
+
+/* Style for the feedback text (e.g., "Great") */
+.result-rank {
+  color: var(--clr-white); /* Set text color */
+  font-size: 1.75rem; /* Set font size */
+  font-weight: var(--fw-bold); /* Set font weight */
+}
+
+/* Summary Section Styles */
+.summary {
+  padding: 3rem; /* Add padding */
+  background: var(--clr-white); /* Set background color */
+}
+
+.summary .section-title {
+  font-size: 1.5rem; /* Set font size */
+  color: var(--clr-darkGrayBlue); /* Set text color */
+}
+
+.summary-score .score-total {
+  font-weight: normal; /* Set font weight */
+  color: var(--clr-darkGrayBlue); /* Set text color */
+}
+
+/* Summary Item Styles */
+.summary-item {
+  display: flex;
+  justify-content: space-between; /* Space items evenly */
+  align-items: center; /* Center items vertically */
+  padding: 1rem; /* Add padding */
+  border-radius: 0.5rem; /* Rounded corners */
+  background-color: hsla(var(--item-color), 0.1); /* Set background color with opacity */
+}
+
+.summary-item svg {
+  stroke: hsl(var(--item-color)); /* Set SVG stroke color */
+}
+
+.summary-item-title {
+  color: hsl(var(--item-color)); /* Set text color */
+  font-weight: var(--fw-bold); /* Set font weight */
+}
+
+/* Define colors for different summary item types */
+.summary-item[data-item-type="accent-1"] {
+  --item-color: var(--clr-lightRed);
+}
+.summary-item[data-item-type="accent-2"] {
+  --item-color: var(--clr-orangeYellow);
+}
+.summary-item[data-item-type="accent-3"] {
+  --item-color: var(--clr-greenTeal);
+}
+.summary-item[data-item-type="accent-4"] {
+  --item-color: var(--clr-cobaltBlue);
+}
+
+/* 
+  .summary-score: Styles the score text within summary items.
+  A slightly muted color is used here for contrast.
+*/
+.summary-score {
+  font-weight: var(--fw-black); /* Set font weight */
+  color: hsla(var(--clr-darkGrayBlue), 0.5); /* Set text color with opacity */
+}
+
+/* Style for the numeric part of the summary score */
+.summary-score span {
+  color: var(--clr-darkGrayBlue); /* Set text color */
+}
+
+/* Footer Container */
+.footer {
+  width: 100%; /* Full width */
+  background-color: var(--clr-paleBlue); /* Use a soft background */
+  padding: 1rem; /* Add padding for spacing */
+  text-align: center; /* Center text horizontally */
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
+  justify-content: center; /* Center children vertically */
+}
+
+.footer p {
+  margin: 0; /* Remove default margin from the paragraph */
+  text-align: center;
+}
+
+/* Attribution Styles */
+.footer .attribution {
+  font-size: 0.875rem; /* Set font size */
+  text-align: center; /* Center text */
+  color: var(--clr-darkGrayBlue); /* Set text color */
+}
+
+.footer .attribution a {
+  color: hsl(228, 45%, 44%); /* Set link color */
+  text-decoration: none; /* Remove underline */
+  transition: text-decoration 0.2s ease; /* Smooth transition for hover effect */
+}
+
+.footer .attribution a:hover,
+.footer .attribution a:focus {
+  text-decoration: underline; /* Add underline on hover/focus */
+}
+
+/* Mobile-Specific Adjustments */
+@media (max-width: 600px) {
+  .footer {
+    padding: 0.75rem 1rem; /* Less padding on mobile */
+  }
+
+  .footer .attribution {
+    font-size: 0.75rem; /* Smaller font for mobile */
+  }
+}
+
